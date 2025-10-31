@@ -117,6 +117,11 @@ body {
   overflow-y: scroll;
 }
 
+::selection {
+  background-color: var(--accent);
+  color: var(--accent-foreground);
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

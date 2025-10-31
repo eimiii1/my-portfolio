@@ -3,14 +3,8 @@ const Experiences = () => {
     const experiences = [
         {
             title: "Hello World!",
-            description: "Wrote my first line of code in HTML",
+            description: "Wrote my first line of code in Python",
             date: 2020,
-            isActive: false,
-        },
-        {
-            title: "Learned Python Basics",
-            description: "Started creating mini projects using Python",
-            date: 2022,
             isActive: false,
         },
         {
