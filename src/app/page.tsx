@@ -100,10 +100,10 @@ export default function Main() {
             Experience
           </h1>
           <div className="flex flex-col lg:justify-around gap-5">
-            {experiences.map(({ title, description, date }, index) => (
+            {experiences.map(({ title, description, date, isActive }, index) => (
               <div key={index} className="flex gap-5">
                 <div className="relative">
-                  <span className={`inline-block h-3 w-3 rounded-full border-2 bg-accent/5 shadow-xs ${Number(date) === todayYear ? "bg-primary border-none" : ""}`}></span>
+                  <span className={`inline-block h-3 w-3 rounded-full border-2 bg-accent/5 shadow-xs ${isActive ? "bg-primary border-none" : ""}`}></span>
                 </div>
                 <div className="w-full">
                   <div className="flex flex-col gap-1.5">
@@ -134,7 +134,7 @@ export default function Main() {
                   {stacks.map((stack, i) => (
                     <Badge key={i}
                       className="scale-100 rounded-md flex items-center justify-center"
-                      variant="outline"
+                      variant="secondary"
                     >{stack}</Badge>
                   ))}
                 </div>
