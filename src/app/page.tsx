@@ -3,7 +3,7 @@ import { Switch } from "@/components/ui/switch";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { ThemeSwitch } from "@/components/global/ThemeSwitch";
 import { MapPin, Mail, Github, Box, Link2, ExternalLink } from "lucide-react";
 import TechStacks from "@/components/ui/techStacks";
@@ -12,7 +12,7 @@ import Experience from "@/components/ui/Experience";
 import { Separator } from "@/components/ui/separator";
 
 export default function Main() {
-  const containerAnimation = {
+  const containerAnimation: Variants = {
     hidden: { opacity: 0},
     visible: {
       opacity: 1,
@@ -24,7 +24,7 @@ export default function Main() {
     }
   }
 
-  const childrenContainerAnimation = {
+  const childrenContainerAnimation: Variants = {
     hidden: {opacity: 0, y: 20},
     visible: {
       opacity: 1,
