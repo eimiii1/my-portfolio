@@ -37,7 +37,7 @@ export default function Main() {
   }
 
   const gridsAnimation: Variants = {
-    hidden: {opacity: 0, y: 50},
+    hidden: { opacity: 0, y: 50 },
     visible: {
       opacity: 1,
       y: 0,
@@ -77,16 +77,18 @@ export default function Main() {
           <div className=" pl-[5px]">
             <h1 className="text-[0.75rem] md:text-[1rem] mt-2 mb-2">College Student <span className="text-[#7e7e7e]">\</span> Major in Web Development</h1>
           </div>
-          <div className="flex flex-wrap gap-2">
-            <Button asChild value="Github" className="text-[0.6rem] md:text-[0.8rem] flex items-center justify-center h-8 flex-3">
-              <Link href="https://github.com/eimiii1">
-                <Github className="scale-90" />
-                Github</Link>
-            </Button>
-            <Button className="text-[0.6rem] md:text-[0.8rem] flex items-center justify-center h-8 flex-1" variant="outline">
-              <Mail className="scale-90" />
-              Send Email
-            </Button>
+          <div className="flex flex-wrap gap-2 lg:justify-start w-full">
+            <div className="flex flex-wrap gap-2 w-full lg:w-auto">
+              <Button asChild value="Github" className="text-[0.6rem] md:text-[0.8rem] flex items-center justify-center h-8 flex-1">
+                <Link href="https://github.com/eimiii1">
+                  <Github className="scale-90" />
+                  Github</Link>
+              </Button>
+              <Button className="text-[0.6rem] md:text-[0.8rem] flex items-center justify-center h-8 flex-1" variant="outline">
+                <Mail className="scale-90" />
+                Send Email
+              </Button>
+            </div>
           </div>
         </div>
       </motion.div>
