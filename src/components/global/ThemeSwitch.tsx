@@ -15,7 +15,7 @@ export function ThemeSwitch() {
     return (
         <>
 
-           <Button size="icon" className="rounded-full />" onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
+           <Button size="icon" className="rounded-full" onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
             {theme === "dark" ? <SunIcon /> : <MoonIcon />}
            </Button>
         </>

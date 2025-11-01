@@ -6,7 +6,7 @@ const TechStacks = () => {
         },
         {
             category: "Backend",
-            stacks: ["Node.js", "Express.js", "PostegreSQL", "MongoDB", "Supabase"],
+            stacks: ["Node.js", "Express.js", "Python", "PostegreSQL", "MongoDB", "Supabase"],
         },
         {
             category: "Tools",

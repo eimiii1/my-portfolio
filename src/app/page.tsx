@@ -116,14 +116,14 @@ export default function Main() {
           <h1 className="font-bold text-lg text-primary">
             Experience
           </h1>
-          <div className="flex flex-col lg:justify-around gap-5 overflow-hidden">
+          <div className="flex flex-col justify-around gap-5 overflow-hidden h-48">
             {experiences.map(({ title, description, date, isActive }, index) => (
               <div key={index} className="flex gap-5">
                 <div className="relative h-10">
                   <Badge className={`overflow-visible text-xs scale-90 flex items-center justify-center h-5 self-end border-gray-200
-                  after:content-[''] after:h-12 after:w-0.5 after:absolute after:bg-gray-200 after:-bottom-12
+                  after:content-[''] after:h-15 after:w-0.5 after:absolute after:bg-gray-200 after:-bottom-15.25
                   font-semibold
-                  ${isActive ? " after:bg-primary! border-primary!" : ""}
+                  ${isActive ? "border-primary!" : ""}
                   `} variant={`${isActive ? "default" : "outline"}`}>{date}</Badge>
                 </div>
                 <div className="w-full h-10">
