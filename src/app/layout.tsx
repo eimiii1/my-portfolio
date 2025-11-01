@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/global/ThemeProvider";
 import { Separator } from "@/components/ui/separator";
+import LenisScroll from "@/components/global/smoothScrolling";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,6 +36,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex justify-center items-center h-screen`}
       >
+        <LenisScroll />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
