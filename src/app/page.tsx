@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { motion, Variants } from "framer-motion";
 import { ThemeSwitch } from "@/components/global/ThemeSwitch";
-import { MapPin, Mail, Github, Box, Link2, ExternalLink } from "lucide-react";
+import { MapPin, Mail, Github, Box, Link2, ExternalLink, FileUser, ChevronRight } from "lucide-react";
 import TechStacks from "@/components/ui/techStacks";
 import { Badge } from "@/components/ui/badge";
 import Experience from "@/components/ui/Experience";
@@ -30,7 +30,7 @@ export default function Main() {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6,
+        duration: 0.5,
         staggerChildren: 0.1,
       }
     }
@@ -88,7 +88,7 @@ export default function Main() {
               Send Email
             </Button>
             <Button className="text-[0.6rem] md:text-[0.8rem] flex items-center justify-center h-8 flex-6" variant="secondary">
-              <Mail className="scale-90" />
+              <FileUser className="scale-90" />
               Resume / CV
             </Button>
           </div>
@@ -121,10 +121,9 @@ export default function Main() {
               <div key={index} className="flex gap-5">
                 <div className="relative h-10">
                   <Badge className={`overflow-visible text-xs scale-90 flex items-center justify-center h-5 self-end border-gray-200
-                  before:content-[''] before:h-0.5 before:w-4 before:absolute before:bg-gray-200 before:-right-4
                   after:content-[''] after:h-12 after:w-0.5 after:absolute after:bg-gray-200 after:-bottom-12
                   font-semibold
-                  ${isActive ? "before:bg-primary! after:bg-primary! border-primary!" : ""}
+                  ${isActive ? " after:bg-primary! border-primary!" : ""}
                   `} variant={`${isActive ? "default" : "outline"}`}>{date}</Badge>
                 </div>
                 <div className="w-full h-10">
@@ -169,9 +168,9 @@ export default function Main() {
             <h1 className="text-primary">Social Links</h1>
           </div>
           <div className="flex flex-col gap-2">
-            <Button asChild variant="outline"><Link href="https://github.com/eimiii1" target="blank" rel="noopener noreferrer">Github<ExternalLink /></Link></Button>
-            <Button asChild variant="outline"><Link href="https://www.facebook.com/johnphilip.barcelo/" target="_blank" rel="noopener noreferrer">Facebook<ExternalLink /></Link></Button>
-            <Button asChild variant="outline"><Link href="" target="_blank" rel="noopener noreferrer">LinkedIn<ExternalLink /></Link></Button>
+            <Button asChild variant="outline"><Link href="https://github.com/eimiii1" target="blank" rel="noopener noreferrer">Github<ExternalLink className="scale-80" /></Link></Button>
+            <Button asChild variant="outline"><Link href="https://www.facebook.com/johnphilip.barcelo/" target="_blank" rel="noopener noreferrer">Facebook<ExternalLink className="scale-80" /></Link></Button>
+            <Button asChild variant="outline"><Link href="" target="_blank" rel="noopener noreferrer">LinkedIn<ExternalLink className="scale-80" /></Link></Button>
           </div>
         </motion.div>
         <motion.div variants={gridsAnimation} className="flex flex-col rounded-lg border p-5 col-span-3 lg:col-span-1 bg-accent/20">
@@ -183,11 +182,13 @@ export default function Main() {
             philipjohn1627@gmail.com
           </p>
         </motion.div>
-        <motion.div variants={gridsAnimation} className="rounded-lg border col-span-3 p-5 bg-accent/20">
-          <h1 className="font-semibold text-lg">Projects</h1>
-
-        </motion.div>
       </motion.div>
+      <div className="flex justify-end">
+        <div className="flex justify-center items-center gap-2">
+            <Button variant="link" className="p-0 font-medium text-primary" asChild><Link href="/projects">Recent Projects</Link></Button>
+          <ChevronRight className="w-3" />
+        </div>
+      </div>
       <Separator />
 
       <div className="p-1 pb-7 text-sm text-center">
