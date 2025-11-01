@@ -72,23 +72,25 @@ export default function Main() {
           </div>
           <div className="flex items-center">
             <MapPin className="scale-60" />
-            <span className="text-xs md:text-sm font-normal">Nueva Ecija, Philippines</span>
+            <span className="text-xs md:text-sm font-normal text-primary">Nueva Ecija, Philippines</span>
           </div>
           <div className=" pl-[5px]">
-            <h1 className="text-[0.75rem] md:text-[1rem] mt-2 mb-2">College Student <span className="text-[#7e7e7e]">\</span> Major in Web Development</h1>
+            <h1 className="text-[0.75rem] md:text-[1rem] mt-2 mb-2 text-primary">College Student <span className="text-[#7e7e7e]">\</span> Major in Web Development</h1>
           </div>
           <div className="flex flex-wrap gap-2 lg:justify-start w-full">
-            <div className="flex flex-wrap gap-2 w-full lg:w-auto">
-              <Button asChild value="Github" className="text-[0.6rem] md:text-[0.8rem] flex items-center justify-center h-8 flex-1">
-                <Link href="https://github.com/eimiii1">
-                  <Github className="scale-90" />
-                  Github</Link>
-              </Button>
-              <Button className="text-[0.6rem] md:text-[0.8rem] flex items-center justify-center h-8 flex-1" variant="outline">
-                <Mail className="scale-90" />
-                Send Email
-              </Button>
-            </div>
+            <Button asChild value="Github" className="text-[0.6rem] md:text-[0.8rem] flex items-center justify-center h-8 flex-1">
+              <Link href="https://github.com/eimiii1">
+                <Github className="scale-90" />
+                Github</Link>
+            </Button>
+            <Button className="text-[0.6rem] md:text-[0.8rem] flex items-center justify-center h-8 flex-1" variant="outline">
+              <Mail className="scale-90" />
+              Send Email
+            </Button>
+            <Button className="text-[0.6rem] md:text-[0.8rem] flex items-center justify-center h-8 flex-6" variant="secondary">
+              <Mail className="scale-90" />
+              Resume / CV
+            </Button>
           </div>
         </div>
       </motion.div>
@@ -97,7 +99,7 @@ export default function Main() {
         variants={childrenContainerAnimation}
         className="grid grid-cols-3 gap-2">
         <motion.div variants={gridsAnimation} className="border rounded-lg p-5 flex flex-col gap-4 lg:row-span-2 col-span-3 bg-accent/20">
-          <h1 className="font-semibold text-lg">About Me</h1>
+          <h1 className="font-bold text-lg text-primary">About Me</h1>
           <div className="flex flex-col gap-7 text-shadow-2xs text-sm font-normal leading-relaxed">
             <p>
               I'm a web development student at the Nueva Ecija University of Science and Technology (NEUST) with a passion for creating modern, responsive, and user-friendly websites. I’m currently learning JavaScript and building projects using frameworks like React and Next.js to develop dynamic and efficient web applications.
@@ -111,16 +113,21 @@ export default function Main() {
           </div>
         </motion.div>
         <motion.div variants={gridsAnimation} className="flex flex-col gap-5 border col-span-3 lg:col-span-2 rows-span-1 h-fit rounded-lg p-5 bg-accent/20">
-          <h1 className="font-semibold text-lg">
+          <h1 className="font-bold text-lg text-primary">
             Experience
           </h1>
           <div className="flex flex-col lg:justify-around gap-5 overflow-hidden">
             {experiences.map(({ title, description, date, isActive }, index) => (
               <div key={index} className="flex gap-5">
                 <div className="relative h-10">
-                  <span className={`relative before:content-[''] before:h-12.5 before:w-[0.2px] before:absolute before:top-2 before:left-1/2 before:translate-x-[-50%] before:bg-accent inline-block h-3 w-3 rounded-full border-2 bg-accent/5 shadow-xs ${isActive ? "bg-primary border-none before:bg-primary" : ""}`}></span>
+                  <Badge className={`overflow-visible text-xs scale-90 flex items-center justify-center h-5 self-end border-gray-200
+                  before:content-[''] before:h-0.5 before:w-4 before:absolute before:bg-gray-200 before:-right-4
+                  after:content-[''] after:h-12 after:w-0.5 after:absolute after:bg-gray-200 after:-bottom-12
+                  font-semibold
+                  ${isActive ? "before:bg-primary! after:bg-primary! border-primary!" : ""}
+                  `} variant={`${isActive ? "default" : "outline"}`}>{date}</Badge>
                 </div>
-                <div className="w-full">
+                <div className="w-full h-10">
                   <div className="flex flex-col gap-1.5">
                     <h1 className="text-[0.7rem] md:text-sm lg:text-sm font-semibold text-primary">
                       {title}
@@ -130,7 +137,6 @@ export default function Main() {
                     <p className="text-[0.6rem] md:text-xs lg:text-xs text-primary">
                       {description}
                     </p>
-                    <Badge className="text-xs scale-90 flex items-center justify-center h-5 self-end" variant="secondary">{date}</Badge>
                   </div>
                 </div>
               </div>
@@ -138,7 +144,7 @@ export default function Main() {
           </div>
         </motion.div>
         <motion.div variants={gridsAnimation} className="flex flex-col gap-4 col-span-3 lg:col-span-1 row-span-3 border rounded-lg p-5 bg-accent/20">
-          <h1 className="flex items-center justify-start font-semibold text-lg">
+          <h1 className="font-bold text-lg text-primary">
             Tech Stack
           </h1>
           <div className="flex flex-col gap-4 ">
@@ -157,7 +163,7 @@ export default function Main() {
             ))}
           </div>
         </motion.div>
-        <motion.div variants={gridsAnimation} className="flex flex-col gap-4 border rounded-lg bg-accent/20 row-span-3 col-span-3 h-fit lg:col-span-2 p-5 text-sm font-semibold">
+        <motion.div variants={gridsAnimation} className="flex flex-col gap-4 border rounded-lg bg-accent/20 row-span-3 col-span-3 h-full lg:col-span-2 p-5 text-sm font-semibold">
           <div className="flex items-center gap-1">
             <Link2 className="text-primary/30 scale-75" />
             <h1 className="text-primary">Social Links</h1>
@@ -173,7 +179,7 @@ export default function Main() {
             <Mail className="text-primary scale-60" />
             <h1 className="text-sm">Email</h1>
           </div>
-          <p className="text-sm text-primary">
+          <p className="text-[0.8rem] font-semibold text-primary">
             philipjohn1627@gmail.com
           </p>
         </motion.div>

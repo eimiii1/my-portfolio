@@ -115,6 +115,7 @@
 body {
   font-family: Geist;
   overflow-y: scroll;
+  user-select: none;
 }
 
 ::selection {
