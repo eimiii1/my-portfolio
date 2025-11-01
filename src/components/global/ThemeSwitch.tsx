@@ -2,6 +2,8 @@
 import { Switch } from "@/components/ui/switch";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
+import { Button } from "../ui/button";
+import { MoonIcon, SunIcon } from "lucide-react";
 
 export function ThemeSwitch() {
     const { theme, setTheme } = useTheme();
@@ -12,11 +14,10 @@ export function ThemeSwitch() {
 
     return (
         <>
-            <Switch
-                checked={theme === "dark"}
-                onCheckedChange={(checked) => setTheme(checked ? "dark" : "light")}
-                className="scale-110"
-            />
+
+           <Button size="icon" className="rounded-full />" onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
+            {theme === "dark" ? <SunIcon /> : <MoonIcon />}
+           </Button>
         </>
     )
 }
