@@ -5,11 +5,12 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { motion, Variants } from "framer-motion";
 import { ThemeSwitch } from "@/components/global/ThemeSwitch";
-import { MapPin, Mail, Github, Box, Link2, ExternalLink, FileUser, ChevronRight } from "lucide-react";
+import { MapPin, Mail, Github, Box, Link2, ExternalLink, FileUser, MoveRight, ArrowRight, Linkedin, Facebook } from "lucide-react";
 import TechStacks from "@/components/ui/techStacks";
 import { Badge } from "@/components/ui/badge";
 import Experience from "@/components/ui/Experience";
 import { Separator } from "@/components/ui/separator";
+import Certificates from "@/components/ui/Certificates";
 
 export default function Main() {
   const containerAnimation: Variants = {
@@ -48,8 +49,11 @@ export default function Main() {
     }
   }
 
+  // "Projects" section motion
+
   const techStacks = TechStacks();
   const experiences = Experience();
+  const certifications = Certificates();
 
   const todayYear: number = new Date().getFullYear();
 
@@ -72,7 +76,7 @@ export default function Main() {
           </div>
           <div className="flex items-center">
             <MapPin className="scale-60" />
-            <span className="text-xs md:text-sm font-normal text-primary">Nueva Ecija, Philippines</span>
+            <span className="text-xs md:text-sm font-normal text-primary">Gapan City, Nueva Ecija, Philippines</span>
           </div>
           <div className=" pl-[5px]">
             <h1 className="text-[0.75rem] md:text-[1rem] mt-2 mb-2 text-primary">College Student <span className="text-[#7e7e7e]">\</span> Major in Web Development</h1>
@@ -162,18 +166,18 @@ export default function Main() {
             ))}
           </div>
         </motion.div>
-        <motion.div variants={gridsAnimation} className="flex flex-col gap-4 border rounded-lg bg-accent/20 row-span-3 col-span-3 h-full lg:col-span-2 p-5 text-sm font-semibold">
+        <motion.div variants={gridsAnimation} className="flex flex-col gap-4 border rounded-lg bg-accent/20 row-span-3 col-span-3 h-fit lg:col-span-2 p-5 text-sm font-semibold">
           <div className="flex items-center gap-1">
             <Link2 className="text-primary/30 scale-75" />
             <h1 className="text-primary">Social Links</h1>
           </div>
           <div className="flex flex-col gap-2">
-            <Button asChild variant="outline"><Link href="https://github.com/eimiii1" target="blank" rel="noopener noreferrer">Github<ExternalLink className="scale-80" /></Link></Button>
-            <Button asChild variant="outline"><Link href="https://www.facebook.com/johnphilip.barcelo/" target="_blank" rel="noopener noreferrer">Facebook<ExternalLink className="scale-80" /></Link></Button>
-            <Button asChild variant="outline"><Link href="" target="_blank" rel="noopener noreferrer">LinkedIn<ExternalLink className="scale-80" /></Link></Button>
+            <Button asChild variant="default"><Link href="https://github.com/eimiii1" target="blank" rel="noopener noreferrer"><Github />Github<ExternalLink className="scale-80" /></Link></Button>
+            <Button asChild variant="destructive" className="bg-blue-600 dark:bg-blue-600 hover:bg-blue-800 dark:hover:bg-blue-800"><Link href="https://www.facebook.com/johnphilip.barcelo/" target="_blank" rel="noopener noreferrer"><Facebook />Facebook<ExternalLink className="scale-80" /></Link></Button>
+            <Button asChild variant="destructive" className="bg-blue-400 dark:bg-blue-400 hover:bg-blue-500 dark:hover:bg-blue-500"><Link href="" target="_blank" rel="noopener noreferrer"><Linkedin />LinkedIn<ExternalLink className="scale-80" /></Link></Button>
           </div>
         </motion.div>
-        <motion.div variants={gridsAnimation} className="flex flex-col rounded-lg border p-5 col-span-3 lg:col-span-1 bg-accent/20">
+        <motion.div variants={gridsAnimation} className="flex flex-col border rounded-lg p-5 col-span-1">
           <div className="flex gap-1 items-center">
             <Mail className="text-primary scale-60" />
             <h1 className="text-sm">Email</h1>
@@ -182,13 +186,42 @@ export default function Main() {
             philipjohn1627@gmail.com
           </p>
         </motion.div>
+        <motion.div variants={gridsAnimation} className="flex flex-col gap-2 rounded-lg border p-5 col-span-3 lg:col-span-3 bg-accent/20">
+          <div className="flex justify-start items-center gap-2">
+            <h1 className="font-bold text-lg text-primary">Certifications</h1>
+            <Link href="/projects" className="flex gap-1 justify-center items-center">
+              <span className="text-xs">View All</span>
+              <ArrowRight className="w-3" />
+            </Link>
+          </div>
+          <div>
+            {certifications.map(({ title, organization, link }, index) => (
+              <Link href={link} target="_blank" key={index}>
+                <div className="border p-3 rounded-lg bg-accent/50 hover:bg-secondary">
+                  <h1 className="font-bold text-sm">{title}</h1>
+                  <p className="text-xs">{organization}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </motion.div>
       </motion.div>
-      <div className="flex justify-end">
-        <div className="flex justify-center items-center gap-2">
-            <Button variant="link" className="p-0 font-medium text-primary" asChild><Link href="/projects">Recent Projects</Link></Button>
-          <ChevronRight className="w-3" />
+      <Separator />
+      <motion.div variants={childrenContainerAnimation} className="flex flex-col justify-center gap-4">
+        <div className="flex justify-start items-center gap-2">
+          <h1 className="text-lg font-bold text-balance">Projects</h1>
+          <Link href="/projects" className="flex gap-1 justify-center items-center">
+            <span className="text-xs">View All</span>
+            <ArrowRight className="w-3" />
+          </Link>
         </div>
-      </div>
+        <div className="grid grid-cols-3 gap-5">
+          {Array.from({ length: 5 }).map((_, index) => (
+            <div key={index} className="h-30 border rounded-lg">
+            </div>
+          ))}
+        </div>
+      </motion.div>
       <Separator />
 
       <div className="p-1 pb-7 text-sm text-center">
