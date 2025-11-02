@@ -4,6 +4,9 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { motion, Variants } from "framer-motion";
+import { ContainerMotion } from "@/components/motion/home/gridAnimation";
+import { AboutMotion } from "@/components/motion/home/aboutAnimation";
+import { ExperienceMotion } from "@/components/motion/home/experienceAnimation";
 import { ThemeSwitch } from "@/components/global/ThemeSwitch";
 import { MapPin, Mail, Github, Box, Link2, ExternalLink, FileUser, MoveRight, ArrowRight, Linkedin, Facebook } from "lucide-react";
 import TechStacks from "@/components/ui/techStacks";
@@ -11,45 +14,31 @@ import { Badge } from "@/components/ui/badge";
 import Experience from "@/components/ui/Experience";
 import { Separator } from "@/components/ui/separator";
 import Certificates from "@/components/ui/Certificates";
+import { StackMotion } from "@/components/motion/home/stackAnimation";
+import { ProjectsMotion } from "@/components/motion/home/projectsAnimation";
 
 export default function Main() {
-  const containerAnimation: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.8,
-        ease: "easeOut",
-        staggerChildren: 0.15,
-      }
-    }
-  }
+  // Container Motion
+  const { containerAnimation, childrenContainerAnimation, gridsAnimation } = ContainerMotion();
 
-  const childrenContainerAnimation: Variants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-        staggerChildren: 0.1,
-      }
-    }
-  }
+  // "About Me" section motion 
+  const { aboutContainerAnimation, aboutChildrenAnimation } = AboutMotion();
 
-  const gridsAnimation: Variants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        ease: "easeOut"
-      }
-    }
-  }
+  // "Experience" section motion
+  const { experienceContainerAnimation, experienceChildrenAnimation } = ExperienceMotion();
+
+  // "Tech Stack" section motion 
+  const { stackContainerAnimation, stackChildrenAnimation } = StackMotion();
 
   // "Projects" section motion
+  const { projectsContainerAnimation, projectsChildrenAnimation } = ProjectsMotion();
+
+
+  const about = [
+    "I'm a web development student at the Nueva Ecija University of Science and Technology (NEUST) with a passion for creating modern, responsive, and user-friendly websites. I’m currently learning JavaScript and building projects using frameworks like React and Next.js to develop dynamic and efficient web applications.",
+    "Throughout my studies, I’ve worked on various projects focused on web application development, optimization, and creating digital experiences that combine creativity and functionality. I’m also exploring backend technologies such as Node.js and databases like PostegreSQL and Supabase as the platform to broaden my skills and understand the full development process.",
+    "Outside of web development, I enjoy exploring game development as a hobby. While it’s not part of my career path, I find it a fun and creative way to practice problem-solving and experiment with different technologies."
+  ]
 
   const techStacks = TechStacks();
   const experiences = Experience();
@@ -57,6 +46,7 @@ export default function Main() {
 
   const todayYear: number = new Date().getFullYear();
 
+  const MotionBadge = motion(Badge)
 
   return (
     <motion.div
@@ -71,7 +61,7 @@ export default function Main() {
         <Image src="/profile/philip.jpg" width={150} height={150} className="rounded-sm h-40 w-40" alt="Profile photo" />
         <div className="w-full flex flex-col gap-1">
           <div className="flex items-center justify-between pl-[5px]">
-            <h1 className="font-extrabold text-lg md:text-2xl tracking-tight text-balance text-primary">Philip Barcelo</h1>
+            <h1 className="font-extrabold text-lg md:text-2xl tracking-tight text-balance text-primary antialiased">Philip Barcelo</h1>
             <ThemeSwitch />
           </div>
           <div className="flex items-center">
@@ -104,28 +94,24 @@ export default function Main() {
         className="grid grid-cols-3 gap-2">
         <motion.div variants={gridsAnimation} className="border rounded-lg p-5 flex flex-col gap-4 lg:row-span-2 col-span-3 bg-accent/20">
           <h1 className="font-bold text-lg text-primary">About Me</h1>
-          <div className="flex flex-col gap-7 text-shadow-2xs text-sm font-normal leading-relaxed">
-            <p>
-              I'm a web development student at the Nueva Ecija University of Science and Technology (NEUST) with a passion for creating modern, responsive, and user-friendly websites. I’m currently learning JavaScript and building projects using frameworks like React and Next.js to develop dynamic and efficient web applications.
-            </p>
-            <p>
-              Throughout my studies, I’ve worked on various projects focused on web application development, optimization, and creating digital experiences that combine creativity and functionality. I’m also exploring backend technologies such as Node.js and databases like PostegreSQL and Supabase as the platform to broaden my skills and understand the full development process.
-            </p>
-            <p>
-              Outside of web development, I enjoy exploring game development as a hobby. While it’s not part of my career path, I find it a fun and creative way to practice problem-solving and experiment with different technologies.
-            </p>
-          </div>
+          <motion.div variants={aboutContainerAnimation} className="flex flex-col gap-4 text-sm font-normal leading-relaxed">
+            {about.map((para, i) => (
+              <motion.p key={i} className=" tracking-tight text-primary antialiased font-medium" variants={aboutChildrenAnimation}>
+                {para}
+              </motion.p>
+            ))}
+          </motion.div>
         </motion.div>
         <motion.div variants={gridsAnimation} className="flex flex-col gap-5 border col-span-3 lg:col-span-2 rows-span-1 h-fit rounded-lg p-5 bg-accent/20">
           <h1 className="font-bold text-lg text-primary">
             Experience
           </h1>
-          <div className="flex flex-col justify-around gap-5 overflow-hidden h-48">
+          <motion.div variants={experienceContainerAnimation} whileInView="visible" initial="hidden" viewport={{ once: true, amount: 0.3 }} className="flex flex-col justify-around gap-5 overflow-hidden h-48">
             {experiences.map(({ title, description, date, isActive }, index) => (
-              <div key={index} className="flex gap-5">
+              <motion.div key={index} className="flex gap-5" variants={experienceChildrenAnimation}>
                 <div className="relative h-10">
                   <Badge className={`overflow-visible text-xs scale-90 flex items-center justify-center h-5 self-end border-gray-200
-                  after:content-[''] after:h-15 after:w-0.5 after:absolute after:bg-gray-200 after:-bottom-15.25
+                  after:content-[''] after:h-15 after:w-px after:absolute after:bg-gray-200 after:-bottom-15.25
                   font-semibold
                   ${isActive ? "border-primary!" : ""}
                   `} variant={`${isActive ? "default" : "outline"}`}>{date}</Badge>
@@ -142,29 +128,29 @@ export default function Main() {
                     </p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </motion.div>
         <motion.div variants={gridsAnimation} className="flex flex-col gap-4 col-span-3 lg:col-span-1 row-span-3 border rounded-lg p-5 bg-accent/20">
           <h1 className="font-bold text-lg text-primary">
             Tech Stack
           </h1>
-          <div className="flex flex-col gap-4 ">
+          <motion.div variants={stackContainerAnimation} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} className="flex flex-col gap-4 ">
             {techStacks.map(({ category, stacks }, index) => (
               <div key={index} className="flex flex-col gap-2">
                 <h1 className="font-semibold text-sm">{category}</h1>
-                <div className="flex gap-2 flex-wrap">
+                <motion.div className="flex gap-2 flex-wrap">
                   {stacks.map((stack, i) => (
-                    <Badge key={i}
+                    <MotionBadge variants={stackChildrenAnimation} key={i}
                       className="scale-100 rounded-md flex items-center justify-center"
                       variant="secondary"
-                    >{stack}</Badge>
+                    >{stack}</MotionBadge>
                   ))}
-                </div>
+                </motion.div>
               </div>
             ))}
-          </div>
+          </motion.div>
         </motion.div>
         <motion.div variants={gridsAnimation} className="flex flex-col gap-4 border rounded-lg bg-accent/20 row-span-3 col-span-3 h-fit lg:col-span-2 p-5 text-sm font-semibold">
           <div className="flex items-center gap-1">
@@ -177,7 +163,7 @@ export default function Main() {
             <Button asChild variant="destructive" className="bg-blue-400 dark:bg-blue-400 hover:bg-blue-500 dark:hover:bg-blue-500"><Link href="" target="_blank" rel="noopener noreferrer"><Linkedin />LinkedIn<ExternalLink className="scale-80" /></Link></Button>
           </div>
         </motion.div>
-        <motion.div variants={gridsAnimation} className="flex flex-col border rounded-lg p-5 col-span-1">
+        <motion.div variants={gridsAnimation} className="flex flex-col border rounded-lg p-5 col-span-3 lg:col-span-1 bg-accent/80">
           <div className="flex gap-1 items-center">
             <Mail className="text-primary scale-60" />
             <h1 className="text-sm">Email</h1>
@@ -194,9 +180,9 @@ export default function Main() {
               <ArrowRight className="w-3" />
             </Link>
           </div>
-          <div>
+          <div className="z-0 hover:-translate-y-0.5 transition-transform">
             {certifications.map(({ title, organization, link }, index) => (
-              <Link href={link} target="_blank" key={index}>
+              <Link href={link} target="_blank" key={index} className="">
                 <div className="border p-3 rounded-lg bg-accent/50 hover:bg-secondary">
                   <h1 className="font-bold text-sm">{title}</h1>
                   <p className="text-xs">{organization}</p>
@@ -206,8 +192,8 @@ export default function Main() {
           </div>
         </motion.div>
       </motion.div>
-      <Separator />
-      <motion.div variants={childrenContainerAnimation} className="flex flex-col justify-center gap-4">
+      <Separator className="shadow-2xl" />
+      <motion.div variants={childrenContainerAnimation} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} className="flex flex-col justify-center gap-4">
         <div className="flex justify-start items-center gap-2">
           <h1 className="text-lg font-bold text-balance">Projects</h1>
           <Link href="/projects" className="flex gap-1 justify-center items-center">
@@ -215,12 +201,12 @@ export default function Main() {
             <ArrowRight className="w-3" />
           </Link>
         </div>
-        <div className="grid grid-cols-3 gap-5">
-          {Array.from({ length: 5 }).map((_, index) => (
-            <div key={index} className="h-30 border rounded-lg">
-            </div>
+        <motion.div variants={projectsContainerAnimation} className="grid lg:grid-cols-3 gap-5">
+          {Array.from({ length: 6 }).map((_, index) => (
+            <motion.div key={index} variants={projectsChildrenAnimation} className="h-30 border rounded-lg shadow-xs">
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </motion.div>
       <Separator />
 
