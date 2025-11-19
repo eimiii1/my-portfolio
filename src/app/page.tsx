@@ -203,7 +203,7 @@ export default function Main() {
         </div>
         <motion.div variants={projectsContainerAnimation} className="grid lg:grid-cols-3 gap-5">
           {Array.from({ length: 6 }).map((_, index) => (
-            <motion.div key={index} variants={projectsChildrenAnimation} className="h-30 border rounded-lg shadow-xs">
+            <motion.div key={index} variants={projectsChildrenAnimation} className="h-30 border rounded-lg shadow-xs  ">
             </motion.div>
           ))}
         </motion.div>
