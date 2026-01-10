@@ -16,7 +16,7 @@ const Experiences = () => {
         {
             title: "BS Information Technology",
             description: "I switched schools and went to Nueva Ecija University of Science and Technology",
-            date: 2025,
+            date: 2026,
             isActive: true,
         }
     ]

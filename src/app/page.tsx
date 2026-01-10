@@ -81,7 +81,9 @@ export default function Main() {
               <Mail className="scale-90" />
               Send Email
             </Button>
-            <Button className="text-[0.6rem] md:text-[0.8rem] flex items-center justify-center h-8 flex-6" variant="secondary">
+            <Button
+            onClick={() => window.open('/Philip Barcelo.pdf', '_blank')}
+             className="text-[0.6rem] md:text-[0.8rem] flex items-center justify-center h-8 flex-6" variant="secondary">
               <FileUser className="scale-90" />
               Resume / CV
             </Button>
@@ -169,7 +171,7 @@ export default function Main() {
             <h1 className="text-sm">Email</h1>
           </div>
           <p className="text-[0.8rem] font-semibold text-primary">
-            philipjohn1627@gmail.com
+            phlpbarcelo@gmail.com
           </p>
         </motion.div>
         <motion.div variants={gridsAnimation} className="flex flex-col gap-2 rounded-lg border p-5 col-span-3 lg:col-span-3 bg-accent/20">
