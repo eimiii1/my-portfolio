@@ -55,7 +55,7 @@ In my free time, I enjoy **game development** and experimenting with other progr
 
 - **Email:** phlpbarcelo@gmail.com
 - **GitHub:** [github.com/eimiii1](https://github.com/eimiii1)
-- **Facebook:** [facebook.com/johnphilip.barcelo]([https://facebook.com/yourprofile](https://www.facebook.com/johnphilip.barcelo/))
+- **Facebook:** [facebook.com/johnphilip.barcelo](https://www.facebook.com/johnphilip.barcelo/)
 - **Resume / CV:** [Resume / CV](https://philip-barcelo.vercel.app/Philip%20Barcelo.pdf) 
 
 ---
