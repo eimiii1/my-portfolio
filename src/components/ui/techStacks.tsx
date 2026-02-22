@@ -2,11 +2,11 @@ const TechStacks = () => {
     return [
         {
             category: "Frontend",
-            stacks: ["Javascript", "Typescript", "React", "Next.js", "Tailwind CSS", "shadcn/ui", "Vite", "C++", "Java"],
+            stacks: ["Javascript", "Typescript", "React", "Next.js", "Tailwind CSS", "shadcn/ui", "Vite"],
         },
         {
             category: "Backend",
-            stacks: ["Node.js", "Express.js", "Python", "PHP", "PostegreSQL", "MongoDB", "Supabase"],
+            stacks: ["Node.js", "Express.js", "Python", "PHP", "PostegreSQL", "MongoDB", "Supabase", "C++", "Java"],
         },
         {
             category: "Tools",
