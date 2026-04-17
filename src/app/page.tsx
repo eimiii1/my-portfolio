@@ -108,7 +108,7 @@ export default function Main() {
           <h1 className="font-bold text-lg text-primary">
             Experience
           </h1>
-          <motion.div variants={experienceContainerAnimation} whileInView="visible" initial="hidden" viewport={{ once: true, amount: 0.3 }} className="flex flex-col justify-around gap-5 overflow-hidden h-48">
+          <motion.div variants={experienceContainerAnimation} whileInView="visible" initial="hidden" viewport={{ once: true, amount: 0.3 }} className="flex flex-col justify-around gap-5 overflow-y-scroll scroll-smooth overscroll-contain">
             {experiences.map(({ title, description, date, isActive }, index) => (
               <motion.div key={index} className="flex gap-5" variants={experienceChildrenAnimation}>
                 <div className="relative h-10">
