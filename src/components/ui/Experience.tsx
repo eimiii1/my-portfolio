@@ -14,6 +14,12 @@ const Experiences = () => {
             isActive: false,
         },
         {
+            title: "Competitive Web Development",
+            description: "Built and delivered a complete website within a competitive timeframe limit, focusing on design and functionality.",
+            date: 2025,
+            isActive: false,
+        },
+        {
             title: "BS Information Technology",
             description: "I switched schools and went to Nueva Ecija University of Science and Technology",
             date: 2026,
