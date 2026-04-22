@@ -1,4 +1,4 @@
-# 👋 Philip Barcelo – Portfolio
+# 👋 Philip Barcelo – My Portfolio
 
 Welcome to my personal portfolio! This site showcases my **projects, skills, experience, and contact info**.  
 
